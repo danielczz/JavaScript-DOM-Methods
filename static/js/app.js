@@ -1,46 +1,50 @@
-// // Get a reference to the table body
-// var tbody = d3.select("tbody");
-
-// // BONUS: Refactor to use Arrow Functions!
-// data.forEach((UFOReport) => {
-//   var row = tbody.append("tr");
-//   Object.entries(UFOReport).forEach(([key, value]) => {
-//     var cell = tbody.append("td");
-//     cell.text(value);
-//   });
-// });
-
-
-
-
-
-// var people = data;
-
-// Select the submit button
+// Declaration of HTML references 
+// Select the submit and reset button
 var submit = d3.select("#filter-btn");
+var reset = d3.select("#reset-btn");
+
+reset.on("click", function(){
+  // d3.event.preventDefault();
+  // document.getElementById("ufo-table").innerHTML="";
+  // ("ufo-table td").remove();
+});
 
 submit.on("click", function() {
-
   // Prevent the page from refreshing
   d3.event.preventDefault();
 
-  // Select the input element and get the raw HTML node
-  var inputElement = d3.select("#datetime");
+  // Reference to select input elements on HTML
+  var inputElementDatetime = d3.select("#datetime");
+  var inputElementCity = d3.select("#city");
+  var inputElementState = d3.select("#state");
+  var inputElementCountry = d3.select("#country");
+  var inputElementShape = d3.select("#shape");
 
-  // Get the value property of the input element
-  var inputValue = inputElement.property("value");
+  // Get values from inputElement value
+  var inputValueDatetime = inputElementDatetime.property("value");
+  var inputValueCity = inputElementCity.property("value");
+  var inputValueState = inputElementState.property("value");
+  var inputValueCountry = inputElementCountry.property("value");
+  var inputValueShape = inputElementShape.property("value");
 
-  console.log(inputValue);
-  // console.log(people);
+  // Review values on console
+  // console.log(inputElementDatetime)
+  // console.log(inputValueCity)
+  // console.log(inputValueState)
+  // console.log(inputValueCountry)
+  // console.log(inputValueShape)
 
-  var filteredData = data.filter(report => report.datetime === inputValue);
-
+  // Filter data using input values for DateTime
+  var filteredData = data.filter(report => report.datetime === inputValueDatetime);
+  
+  // Review values on console
   console.log(filteredData);
 
-  
-
   // Get a reference to the table body
+
 var tbody = d3.select("tbody");
+
+d3.selectAll("tbody > *").remove();
 
 // BONUS: Refactor to use Arrow Functions!
 filteredData.forEach((UFOReport) => {
@@ -49,38 +53,7 @@ filteredData.forEach((UFOReport) => {
     var cell = tbody.append("td");
     cell.text(value);
   });
+
 });
 
-
-
-
-
-
-
-
-
-
-  // // BONUS: Calculate summary statistics for the age field of the filtered data
-
-  // // First, create an array with just the age values
-  // var ages = filteredData.map(person => person.age);
-
-  // // Next, use math.js to calculate the mean, median, mode, var, and std of the ages
-  // var mean = math.mean(ages);
-  // var median = math.median(ages);
-  // var mode = math.mode(ages);
-  // var variance = math.var(ages);
-  // var standardDeviation = math.std(ages);
-
-  // // Finally, add the summary stats to the `ul` tag
-  // d3.select(".summary")
-  //   .append("li").text(`Mean: ${mean}`)
-  //   .append("li").text(`Median: ${median}`)
-  //   .append("li").text(`Mode: ${mode}`)
-  //   .append("li").text(`Variance: ${variance}`)
-  //   .append("li").text(`Standard Deviation: ${standardDeviation}`);
 });
-
-
-
-
