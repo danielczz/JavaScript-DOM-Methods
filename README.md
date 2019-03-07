@@ -1,11 +1,12 @@
 # JavaScript & DOM Methods
+***
 
 ## Authors
 * Daniel Cespedes - [LinkedIn](https://www.linkedin.com/in/selinzorob/) - [GitHub](https://github.com/danielczz)
 
 
 ![Landing page](static/images/nasa_spaceman.jpg)
-***
+
 
 ## Project Outline
 In this project we are going to create a webpage to share insights about about our main topic: **"UFO Sightings"**. To create the analysis we are going to load data provide from many different UFO sightings in different time-zones the globe. 
@@ -29,14 +30,12 @@ In order to provide a better analytical application the user could change the da
 1. DOM - _The Document Object Model_ is an application programming interface (API) for HTML and XML documents.
 [_DOM_](https://www.w3.org/TR/DOM-Level-1/introduction.html)
 
-***
-
 ## Data Analysis Framework
 
 ### **Data gathering**
 - Data provided for the analysis on a JavaScript file called "data.js". 
 - The dataset contains reports of UFO sightings over the last century. 
-- It uses UFO-Sighting data freely available here: [_UFO Sightings_](https://www.kaggle.com/NUFORC/ufo-sightings)
+- It uses UFO-Sighting data freely available online here: [_UFO Sightings_](https://www.kaggle.com/NUFORC/ufo-sightings)
 - This is a 2 records extraction from the data provided. Find the complete data available here: [_app.js_](static/js/data.js)
 
 ```JS
@@ -149,3 +148,19 @@ This is a brief sample extraction of the JavaScript code. Find the complete code
     });
   });
 ...
+```
+
+Here you can find a screencapture of the final application:
+![Screencapture](static/images/screen_captures/Level_1_screencapture.png)
+
+Here you can find the assets files for the output: 
+- Level 1: Enter a datetime:
+[_datetime_](static/images/screen_captures/Level_1_screencapture.png)
+- Level 2: Enter a city:
+[_city_](static/images/screen_captures/Level_2_city.png)
+- Level 2: Enter a state:
+[_state_](static/images/screen_captures/Level_2_state.png)
+- Level 2: Enter a country:
+[_country_](static/images/screen_captures/Level_2_country.png)
+- Level 2: Enter a shape:
+[_shape_](static/images/screen_captures/Level_2_city.png)
