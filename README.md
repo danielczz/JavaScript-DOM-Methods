@@ -125,7 +125,7 @@ This is a brief sample extraction of the JavaScript code. Find the complete code
   }
 ...
 ```
-### **Data results sharing**
+### **Data results**
 This is a brief sample extraction of the JavaScript code. Find the complete code available here: [_app.js_](static/js/app.js)
 
 ```JS
@@ -149,6 +149,9 @@ This is a brief sample extraction of the JavaScript code. Find the complete code
   });
 ...
 ```
+### **Data sharing**
+Here is a link for the final webpage application:
+[_UFO Sightings webpage_](https://danielczz.github.io/JavaScript-DOM-Methods/) 
 
 Here you can find a screencapture of the final application:
 ![Screencapture](static/images/screen_captures/Level_1_screencapture.png)
@@ -163,4 +166,4 @@ Here you can find the assets files for the output:
 - Level 2: Enter a country:
 [_country_](static/images/screen_captures/Level_2_country.png)
 - Level 2: Enter a shape:
-[_shape_](static/images/screen_captures/Level_2_city.png)
+[_shape_](static/images/screen_captures/Level_2_shape.png)
