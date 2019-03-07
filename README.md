@@ -1,63 +1,18 @@
 # JavaScript & DOM Methods
 
-## Author 
+## Authors
 * Daniel Cespedes - [LinkedIn](https://www.linkedin.com/in/selinzorob/) - [GitHub](https://github.com/danielczz)
 
-## Project outline
 
-In this project we are going to create a webpage to share insights about about our main topic: **"UFO Sightings"**.
+![Landing page](static/images/nasa_spaceman.jpg)
+***
 
-The main attributes of this particular analysis is that we are going to have filter options so we can change the information on the table. 
+## Project Outline
+In this project we are going to create a webpage to share insights about about our main topic: **"UFO Sightings"**. To create the analysis we are going to load data provide from many different UFO sightings in different time-zones the globe. 
 
-Direct links for final output:
+In order to provide a better analytical application the user could change the data provided through input fields for different dimensions within the data, such as:  _Date/time, City, State, Country and Shape._
 
-
-
-
-**
-**
-
-
-
-
-**
-
-
-
-****
-************
-****
-****
-
-
-** information and data providers is that are in this case, data is provided in a js file, in order to analyze data and create the HTML webpage, these are the main tech tools to be used:
-
-
-
- **
-
-
-**_real-time data providers_, and we are going to use _Web scrapping tools_ in order to obtain a best of breed web application in real-time to understand Mars current behavior.
-
-The direct links for the different assets for the analysis are as follows:
-
-1. Screenshots of final web application: 
-[_click here_](https://github.com/danielczz/web_application_scrapper/blob/master/images/screencapture.png)
-
-1. Main Python script: 
-[_click here_](https://github.com/danielczz/web_application_scrapper/blob/master/scrape_mission_to_mars.py)
-
-1. Main Jupyter Notebook script: 
-[_click here_](https://github.com/danielczz/web_application_scrapper/blob/master/jupyter/mission_to_mars.ipynb)
-
-
-1. Main MongoDB in Python: 
-[_click here_](https://github.com/danielczz/web_application_scrapper/blob/master/app.py)
-
-1. Main HTML file: 
-[_click here_](https://github.com/danielczz/web_application_scrapper/blob/master/templates/index.html)
-
-### **Technology landscape**
+### **Technology Landscape**
 
 1. JavaScript, one of the core technologies of the World Wide Web.
 [_JavaScript_](https://www.javascript.com/)
@@ -71,6 +26,126 @@ The direct links for the different assets for the analysis are as follows:
 1. D3.js - _Data Driven Document for JavaScript_ is a JavaScript library for producing dynamic, interactive data visualizations in web browsers.
 [_D3.js_](https://d3js.org/)
 
-### **Data gathering**
+1. DOM - _The Document Object Model_ is an application programming interface (API) for HTML and XML documents.
+[_DOM_](https://www.w3.org/TR/DOM-Level-1/introduction.html)
 
-Data provided for the analysis on a JavaScript file called "data.js"
+***
+
+## Data Analysis Framework
+
+### **Data gathering**
+- Data provided for the analysis on a JavaScript file called "data.js". 
+- The dataset contains reports of UFO sightings over the last century. 
+- It uses UFO-Sighting data freely available here: [_UFO Sightings_](https://www.kaggle.com/NUFORC/ufo-sightings)
+- This is a 2 records extraction from the data provided. Find the complete data available here: [_app.js_](static/js/data.js)
+
+```JS
+// Data preview
+var data = [{
+    datetime: "1/1/2010",
+    city: "benton",
+    state: "ar",
+    country: "us",
+    shape: "circle",
+    durationMinutes: "5 mins.",
+    comments: "4 bright green circles high in the sky going in circles then one bright green light at my front door."
+  },
+  {
+    datetime: "1/1/2010",
+    city: "bonita",
+    state: "ca",
+    country: "us",
+    shape: "light",
+    durationMinutes: "13 minutes",
+    comments: "Three bright red lights witnessed floating stationary over San Diego New Years Day 2010"
+  }
+```
+
+### **Data extraction and load**
+This is a brief sample extraction of the JavaScript code. Find the complete code available here: [_app.js_](static/js/app.js)
+
+```JS
+
+// Declaration of HTML references 
+// Select the submit and reset button
+var submit = d3.select("#filter-btn");
+
+submit.on("click", function() {
+  // Prevent the page from refreshing
+  d3.event.preventDefault();
+
+  // Reference to select input elements on HTML
+  var inputElementDatetime = d3.select("#datetime");
+  var inputElementCity = d3.select("#city");
+  var inputElementState = d3.select("#state");
+  var inputElementCountry = d3.select("#country");
+  var inputElementShape = d3.select("#shape");
+
+  // Get values from inputElement value
+  var inputValueDatetime = inputElementDatetime.property("value");
+  var inputValueCity = inputElementCity.property("value");
+  var inputValueState = inputElementState.property("value");
+  var inputValueCountry = inputElementCountry.property("value");
+  var inputValueShape = inputElementShape.property("value");
+
+  // Filter data using input values
+  // Getting value entry Lengths
+  var entryLengthDatetime = inputValueDatetime.length;
+  var entryLengthCity = inputValueCity.length;
+  var entryLengthState = inputValueState.length;
+  var entryLengthCountry = inputValueCountry.length;
+  var entryLengthShape = inputValueShape.length;
+
+});
+```
+
+### **Data analysis**
+This is a brief sample extraction of the JavaScript code. Find the complete code available here: [_app.js_](static/js/app.js)
+
+```JS 
+...
+  if (entryLengthDatetime > 0) {
+    console.log(inputValueDatetime)
+    var filteredData = data.filter(report => report.datetime === inputValueDatetime);
+  }
+
+  else if (entryLengthCity > 0) {
+    var filteredData = data.filter(report => report.city === inputValueCity);
+  }
+
+  else if (entryLengthState > 0) {
+    var filteredData = data.filter(report => report.state === inputValueState);
+  }
+  
+  else if (entryLengthCountry > 0) {
+    var filteredData = data.filter(report => report.country === inputValueCountry);
+  }
+
+  else if (entryLengthShape > 0) {
+    var filteredData = data.filter(report => report.shape === inputValueShape);
+  }
+...
+```
+### **Data results sharing**
+This is a brief sample extraction of the JavaScript code. Find the complete code available here: [_app.js_](static/js/app.js)
+
+```JS
+...
+    // Review values on console
+    console.log(filteredData);
+
+  // Get a reference to the table body 
+  var tbody = d3.select("tbody");
+  
+  // Remove possible data populated before 
+  d3.selectAll("tbody > *").remove();
+  
+  // Use filteredData to populate table using ForEach
+  filteredData.forEach((UFOReport) => {
+    var row = tbody.append("tr");
+    Object.entries(UFOReport).forEach(([key, value]) => {
+      var cell = tbody.append("td");
+      cell.text(value);
+    });
+  });
+...

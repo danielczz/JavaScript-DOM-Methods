@@ -1,13 +1,6 @@
 // Declaration of HTML references 
 // Select the submit and reset button
 var submit = d3.select("#filter-btn");
-var reset = d3.select("#reset-btn");
-
-reset.on("click", function(){
-  // d3.event.preventDefault();
-  // document.getElementById("ufo-table").innerHTML="";
-  // ("ufo-table td").remove();
-});
 
 submit.on("click", function() {
   // Prevent the page from refreshing
