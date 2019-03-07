@@ -34,26 +34,52 @@ submit.on("click", function() {
   // console.log(inputValueCountry)
   // console.log(inputValueShape)
 
-  // Filter data using input values for DateTime
-  var filteredData = data.filter(report => report.datetime === inputValueDatetime);
+  // Filter data using input values
+  // Getting value entry Lengths
+  var entryLengthDatetime = inputValueDatetime.length;
+  var entryLengthCity = inputValueCity.length;
+  var entryLengthState = inputValueState.length;
+  var entryLengthCountry = inputValueCountry.length;
+  var entryLengthShape = inputValueShape.length;
+
+
+  if (entryLengthDatetime > 0) {
+    console.log(inputValueDatetime)
+    var filteredData = data.filter(report => report.datetime === inputValueDatetime);
+  }
+
+  else if (entryLengthCity > 0) {
+    var filteredData = data.filter(report => report.city === inputValueCity);
+  }
+
+  else if (entryLengthState > 0) {
+    var filteredData = data.filter(report => report.state === inputValueState);
+  }
   
-  // Review values on console
-  console.log(filteredData);
+  else if (entryLengthCountry > 0) {
+    var filteredData = data.filter(report => report.country === inputValueCountry);
+  }
 
-  // Get a reference to the table body
+  else if (entryLengthShape > 0) {
+    var filteredData = data.filter(report => report.shape === inputValueShape);
+  }
 
-var tbody = d3.select("tbody");
+    // Review values on console
+    console.log(filteredData);
 
-d3.selectAll("tbody > *").remove();
-
-// BONUS: Refactor to use Arrow Functions!
-filteredData.forEach((UFOReport) => {
-  var row = tbody.append("tr");
-  Object.entries(UFOReport).forEach(([key, value]) => {
-    var cell = tbody.append("td");
-    cell.text(value);
+  // Get a reference to the table body 
+  var tbody = d3.select("tbody");
+  
+  // Remove possible data populated before 
+  d3.selectAll("tbody > *").remove();
+  
+  // Use filteredData to populate table using ForEach
+  filteredData.forEach((UFOReport) => {
+    var row = tbody.append("tr");
+    Object.entries(UFOReport).forEach(([key, value]) => {
+      var cell = tbody.append("td");
+      cell.text(value);
+    });
   });
-
-});
 
 });
