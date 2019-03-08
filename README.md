@@ -1,5 +1,4 @@
 # JavaScript & DOM Methods
-***
 
 ## Authors
 * Daniel Cespedes - [LinkedIn](https://www.linkedin.com/in/selinzorob/) - [GitHub](https://github.com/danielczz)
